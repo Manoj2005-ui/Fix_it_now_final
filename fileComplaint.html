@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    
+
+
+* {
+      box-sizing: border-box;
+    }
+
+.logo {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: 80px;
+  height: auto;
+}
+
+.tagline {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    header,
+    footer {
+      background-color: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 1.2rem;
+    }
+
+    .container {
+      background: #fff;
+      padding: 20px;
+      max-width: 500px;
+      margin: 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    body.dark .container {
+      background: #1e1e1e;
+    }
+
+    h3 {
+      text-align: center;
+      color: #003366;
+    }
+
+    body.dark h3 {
+      color: #90caf9;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    input[type="file"] {
+      padding: 5px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 8px 5px 0 0;
+      border: none;
+      border-radius: 6px;
+      background-color: #007acc;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005f99;
+    }
+
+    .spinner {
+      display: none;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .spinner::after {
+      content: "";
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      border: 3px solid #ccc;
+      border-top-color: #007acc;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    #imagePreview {
+      max-width: 100%;
+      margin-top: 10px;
+      border-radius: 6px;
+    }
+
+    .status {
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .pending {
+      background-color: #ffcccc;
+      color: #cc0000;
+    }
+
+    .resolved {
+      background-color: #ccffcc;
+      color: #006600;
+    }
+
+    .toggle-dark {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background: #444;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 90%;
+        padding: 15px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .toggle-dark {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="icon" type="image/png" href="rtp.png">
+  <title>File Complaint - Civic Complaint Management System</title>
+</head>
+<body>
+  <div class="toggle-dark" onclick="toggleDarkMode()">🌙</div>
+
+  <header>
+    <h2>File a Complaint</h2>
+  </header>
+
+  <div class="container" id="fileComplaint">
+  <form action="{{ url_for('user_comlaint') }}" method="post" enctype="multipart/form-data">
+    <input type="file" id="image" name="image" accept="image/*" onchange="previewImage()" required />
+    <img id="imagePreview" style="max-width: 100px;" />
+
+    <input type="text" id="description" name="description" placeholder="Enter description" required />
+    <input type="text" id="location" name="location" placeholder="Enter Location" required />
+
+    <label for="department">Select Department:</label>
+    <select id="department" name="department" required>
+      <option value="">--Select--</option>
+      <option value="Road Department">Road Department</option>
+      <option value="Water Department">Water Department</option>
+      <option value="Electricity Department">Electricity Department</option>
+    </select>
+
+    <select id="category" name="category" required>
+      <option value="">Select Category</option>
+      <option value="Road">Road</option>
+      <option value="Water">Water</option>
+      <option value="Electricity">Electricity</option>
+      <option value="Garbage">Garbage</option>
+    </select>
+
+    <button type="submit">Submit</button>
+    <div class="spinner" id="submitSpinner" style="display: none;"></div>
+    <a href="dashboard.html"><button type="button">Back</button></a>
+  </form>
+</div>
+
+</body>
+</html>

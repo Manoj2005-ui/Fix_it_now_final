@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+
+  <link rel="icon" type="image/x-icon" href="C:\Users\manoj\Desktop\RTP\rtp.png" >
+  <title>Civic Complaint Management System</title>
+</head>
+<body>
+  <div class="toggle-dark" onclick="toggleDarkMode()">🌙</div>
+
+  <header>
+    <h2>Civic Complaint Management System</h2>
+  </header>
+  <div class="container" id="trackComplaint" >
+    <h3>Track Complaint</h3>
+    <input type="text" id="trackId" placeholder="Enter Complaint ID" />
+    <button onclick="trackComplaint()">Track</button>
+    <div class="spinner" id="trackSpinner"></div>
+    <div id="trackStatus"></div>
+    <a href="dashboard.html"><button>Back</button></a>
+  </div>
+</body>
+</html>

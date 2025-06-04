@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+  <link rel="icon" type="image/png" href="rtp.png" />
+  <title>Civic Complaint Management System</title>
+</head>
+<body>
+  <div class="toggle-dark" onclick="toggleDarkMode()">🌙</div>
+
+  <header>
+    <h2>Civic Complaint Management System</h2>
+  </header>
+
+  <div class="container" id="allComplaints">
+    <h2>All Complaints</h2>
+    <ul id="complaintList"></ul> <!-- Complaints will be inserted here dynamically -->
+
+    <section id="delete-complaint-section">
+      <h3>Delete Complaint</h3>
+      <div id="delete-complaints-list"></div>
+    </section>
+
+    <a href="dashboard.html"><button>Back</button></a>
+  </div>
+</body>
+</html>
